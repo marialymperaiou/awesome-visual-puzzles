@@ -452,9 +452,6 @@ https://marialymperaiou.github.io/awesome-visual-puzzles/
 ## Paper
 [https://arxiv.org/abs/2601.13705]
 
-## Contact
-For questions, collaborations, or adding new visual puzzle papers contact: [marialymp@ails.ece.ntua.gr]
-
 ## Citation
 ```bibtex
 @misc{lymperaiou2026reasoningpatternmatchingprobing,
@@ -466,3 +463,7 @@ For questions, collaborations, or adding new visual puzzle papers contact: [mari
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2601.13705}, 
 }
+```
+
+## Contributing
+For questions, collaborations, or adding new visual puzzle papers contact: [marialymp@ails.ece.ntua.gr]
