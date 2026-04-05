@@ -1,18 +1,22 @@
 :root {
-  --bg: #1f1719;
-  --bg-soft: #2a1e22;
-  --panel: rgba(72, 45, 49, 0.72);
-  --panel-strong: rgba(96, 58, 62, 0.82);
-  --panel-light: rgba(143, 95, 97, 0.18);
-  --border: rgba(230, 191, 178, 0.18);
-  --border-strong: rgba(235, 190, 171, 0.34);
-  --text: #f5e6dc;
-  --muted: #dcc1b3;
-  --accent: #cd7f74;
-  --accent-deep: #a95c59;
-  --accent-soft: #f0b8a7;
-  --gold-dust: #b89068;
-  --shadow: 0 14px 50px rgba(9, 5, 6, 0.45);
+  --bg: #191611;
+  --bg-soft: #221d16;
+  --panel: rgba(58, 49, 39, 0.78);
+  --panel-strong: rgba(73, 61, 47, 0.84);
+  --panel-light: rgba(160, 132, 95, 0.12);
+
+  --border: rgba(214, 190, 158, 0.16);
+  --border-strong: rgba(214, 190, 158, 0.32);
+
+  --text: #f3eadf;
+  --muted: #d2c2ae;
+
+  --accent: #a87a52;
+  --accent-deep: #8a6240;
+  --accent-soft: #d8b38b;
+  --gold-dust: #b89a6a;
+
+  --shadow: 0 14px 50px rgba(8, 6, 4, 0.45);
   --radius-xl: 30px;
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -32,9 +36,9 @@ body {
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(205, 127, 116, 0.18), transparent 30%),
-    radial-gradient(circle at 85% 15%, rgba(184, 144, 104, 0.12), transparent 24%),
-    linear-gradient(180deg, #201719 0%, #24191d 30%, #191215 100%);
+    radial-gradient(circle at top left, rgba(168, 122, 82, 0.16), transparent 30%),
+    radial-gradient(circle at 85% 15%, rgba(184, 154, 106, 0.10), transparent 24%),
+    linear-gradient(180deg, #18140f 0%, #1d1812 30%, #14110d 100%);
   line-height: 1.7;
   position: relative;
 }
@@ -92,8 +96,8 @@ a:hover {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(18px);
-  background: rgba(26, 18, 20, 0.68);
-  border-bottom: 1px solid rgba(236, 196, 181, 0.1);
+  background: rgba(20, 17, 13, 0.72);
+  border-bottom: 1px solid rgba(214, 190, 158, 0.08);
 }
 
 .nav-wrap {
@@ -105,11 +109,11 @@ a:hover {
 }
 
 .brand {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
   color: var(--text);
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
 }
 
 .nav-links {
@@ -155,9 +159,10 @@ a:hover {
 .failure-card h3,
 .info-card h3,
 .timeline-item h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  line-height: 1.05;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.08;
   margin: 0;
+  letter-spacing: -0.03em;
 }
 
 .hero h1 {
@@ -184,7 +189,7 @@ a:hover {
 .category-panel,
 .failure-card,
 .timeline-item {
-  background: linear-gradient(180deg, rgba(88, 56, 60, 0.78), rgba(57, 34, 39, 0.76));
+  background: linear-gradient(180deg, rgba(69, 57, 44, 0.82), rgba(43, 36, 29, 0.82));
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
@@ -259,8 +264,12 @@ a:hover {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-  color: #fff7f2;
+  color: #fffaf4;
   border-color: transparent;
+}
+
+.btn-primary:hover {
+  color: #ffffff;
 }
 
 .btn-primary:hover {
@@ -448,10 +457,10 @@ a:hover {
   overflow-x: auto;
   padding: 1.2rem 1.3rem;
   border-radius: var(--radius-lg);
-  background: rgba(16, 10, 12, 0.78);
-  border: 1px solid rgba(230, 191, 178, 0.14);
-  color: #f8ddd0;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: rgba(14, 11, 8, 0.82);
+  border: 1px solid rgba(214, 190, 158, 0.14);
+  color: #f0dfc9;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .bibtex code {
