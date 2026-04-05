@@ -4,480 +4,524 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Awesome Visual Puzzles</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta
+    name="description"
+    content="Project page for 'Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles'"
+  />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="#top" class="brand">Awesome Visual Puzzles</a>
-      <nav class="nav">
-        <a href="#overview">Overview</a>
-        <a href="#taxonomy">Taxonomy</a>
-        <a href="#paper">Paper</a>
-        <a href="#citation">Citation</a>
-      </nav>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Project page</p>
+      <h1>Awesome Visual Puzzles</h1>
+      <p class="subtitle">
+        <strong>Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles</strong>
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2601.13705" target="_blank" rel="noopener noreferrer">Read Paper</a>
+        <a class="btn btn-secondary" href="#citation">Citation</a>
+      </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">Project Page</p>
-        <h1>Awesome Visual Puzzles</h1>
-        <h2>Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles</h2>
-        <p class="subtitle">
-          A curated resource accompanying our survey on visual puzzles as diagnostic tools
-          for evaluating reasoning in Large Vision-Language Models.
+  <nav class="toc">
+    <div class="container">
+      <a href="#overview">Overview</a>
+      <a href="#what-is-a-visual-puzzle">What is a visual puzzle?</a>
+      <a href="#taxonomy">Taxonomy</a>
+      <a href="#inductive-reasoning">Inductive</a>
+      <a href="#analogical-reasoning">Analogical</a>
+      <a href="#algorithmic-reasoning">Algorithmic</a>
+      <a href="#deductive-reasoning">Deductive</a>
+      <a href="#geometric-spatial-reasoning">Geometric / Spatial</a>
+      <a href="#cross-cutting-failure-modes">Failure Modes</a>
+      <a href="#future-directions">Future Directions</a>
+      <a href="#paper">Paper</a>
+      <a href="#citation">Citation</a>
+      <a href="#contributing">Contributing</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="overview" class="section">
+      <div class="container">
+        <h2>Overview</h2>
+        <p>
+          Large Vision-Language Models often appear impressive on multimodal tasks, but it remains
+          unclear whether they truly <strong>reason over visual structure</strong> or rely on
+          <strong>shortcut-driven pattern matching</strong>.
         </p>
 
-        <div class="hero-actions">
-          <a class="btn primary" href="https://arxiv.org/abs/2601.13705" target="_blank" rel="noopener noreferrer">Read the Paper</a>
-          <a class="btn" href="#taxonomy">View Taxonomy</a>
-          <a class="btn" href="#citation">Citation</a>
-        </div>
+        <p>Visual puzzles provide a particularly useful testbed because they are:</p>
+        <ul class="feature-list">
+          <li><strong>visually grounded</strong></li>
+          <li><strong>constrained and verifiable</strong></li>
+          <li><strong>less reliant on external world knowledge</strong></li>
+          <li><strong>well-suited for probing abstraction, rule induction, analogy, planning, deduction, and spatial reasoning</strong></li>
+        </ul>
+
+        <p>
+          This repository organizes the literature on visual puzzle reasoning in LVLMs and highlights
+          recurring failure modes across benchmark families.
+        </p>
       </div>
     </section>
 
-    <section class="section">
+    <section id="what-is-a-visual-puzzle" class="section alt">
       <div class="container">
-        <div class="card">
-          <h3>Contents</h3>
-          <div class="toc-grid">
-            <a href="#overview">Overview</a>
-            <a href="#what-is-a-visual-puzzle">What is a visual puzzle?</a>
-            <a href="#taxonomy">Taxonomy</a>
-            <a href="#inductive-reasoning">Inductive Reasoning</a>
-            <a href="#analogical-reasoning">Analogical Reasoning</a>
-            <a href="#algorithmic-reasoning">Algorithmic Reasoning</a>
-            <a href="#deductive-reasoning">Deductive Reasoning</a>
-            <a href="#geometric-spatial-reasoning">Geometric / Spatial Reasoning</a>
-            <a href="#cross-cutting-failure-modes">Cross-cutting Failure Modes</a>
-            <a href="#future-directions">Future Directions</a>
-            <a href="#website">Website</a>
-            <a href="#paper">Paper</a>
-            <a href="#citation">Citation</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </div>
+        <h2>What is a visual puzzle?</h2>
+        <p>
+          In the survey’s framing, a visual puzzle is a reasoning-centered task with three core properties:
+        </p>
+
+        <ol>
+          <li><strong>Essential reliance on visual information</strong></li>
+          <li><strong>An explicitly constrained and verifiable structure</strong></li>
+          <li><strong>A focus on reasoning rather than knowledge priors</strong></li>
+        </ol>
+
+        <p>
+          A visual puzzle can be viewed as a problem instance <strong>⟨I, R, S⟩</strong>, where:
+        </p>
+
+        <ul>
+          <li><strong>I</strong> = input (visual input, optionally with text)</li>
+          <li><strong>R</strong> = rules or constraints, either explicit or implicit</li>
+          <li><strong>S</strong> = structured solution space, usually discrete or combinatorial, with verifiable correctness</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section" id="overview">
+    <section id="taxonomy" class="section">
       <div class="container">
-        <div class="card">
-          <h3>Overview</h3>
-          <p>
-            Large Vision-Language Models often appear impressive on multimodal tasks, but it remains
-            unclear whether they truly <strong>reason over visual structure</strong> or rely on
-            <strong>shortcut-driven pattern matching</strong>.
-          </p>
-          <p>Visual puzzles provide a particularly useful testbed because they are:</p>
-          <ul>
-            <li><strong>visually grounded</strong></li>
-            <li><strong>constrained and verifiable</strong></li>
-            <li><strong>less reliant on external world knowledge</strong></li>
-            <li><strong>well-suited for probing abstraction, rule induction, analogy, planning, deduction, and spatial reasoning</strong></li>
-          </ul>
-          <p>
-            This repository organizes the literature on visual puzzle reasoning in LVLMs and highlights
-            recurring failure modes across benchmark families.
-          </p>
-        </div>
+        <h2>Taxonomy</h2>
+        <figure class="taxonomy-figure">
+          <img src="taxonomy_vpuzzles.png" alt="Visual reasoning taxonomy tree" />
+          <figcaption>Visual reasoning taxonomy tree</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="section" id="what-is-a-visual-puzzle">
+    <section id="inductive-reasoning" class="section alt">
       <div class="container">
-        <div class="card">
-          <h3>What is a visual puzzle?</h3>
-          <p>
-            In the survey’s framing, a visual puzzle is a reasoning-centered task with three core properties:
-          </p>
-          <ol>
-            <li><strong>Essential reliance on visual information</strong></li>
-            <li><strong>An explicitly constrained and verifiable structure</strong></li>
-            <li><strong>A focus on reasoning rather than knowledge priors</strong></li>
-          </ol>
-          <p>A visual puzzle can be viewed as a problem instance <strong>⟨I, R, S⟩</strong>, where:</p>
-          <ul>
-            <li><strong>I</strong> = input (visual input, optionally with text)</li>
-            <li><strong>R</strong> = rules or constraints, either explicit or implicit</li>
-            <li><strong>S</strong> = structured solution space, usually discrete or combinatorial, with verifiable correctness</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <h2>Inductive Reasoning</h2>
 
-    <section class="section" id="taxonomy">
-      <div class="container">
         <div class="card">
-          <h3>Taxonomy</h3>
-          <p class="figure-caption">
-            A visual taxonomy of reasoning categories in visual puzzle evaluation for LVLMs.
-          </p>
-          <div class="taxonomy-image-wrap">
-            <img src="taxonomy_vpuzzles.png" alt="Visual reasoning taxonomy tree" class="taxonomy-image" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="inductive-reasoning">
-      <div class="container">
-        <div class="card">
-          <h3>Inductive Reasoning</h3>
-
-          <h4>Focus</h4>
+          <h3>Focus</h3>
           <p>
             Benchmarks in this category test whether LVLMs can infer hidden rules from visual examples
             rather than match familiar surface patterns.
           </p>
+        </div>
 
-          <h4>Representative benchmark families</h4>
-          <ul>
-            <li><strong>RPM / PGM-style abstraction</strong></li>
-            <li><strong>ARC / EasyARC / ARC-AGI-2</strong></li>
-            <li><strong>BabyVision</strong></li>
-            <li><strong>VisualPuzzles</strong></li>
-            <li><strong>VisuRiddles</strong></li>
-            <li><strong>MME-Reasoning</strong></li>
-            <li><strong>PuzzleVQA</strong></li>
-            <li><strong>VisualSphinx</strong></li>
-            <li><strong>LogicVista</strong></li>
-            <li><strong>I-RAVEN / A-I-RAVEN / I-RAVEN-Mesh</strong></li>
-            <li><strong>IQBench</strong></li>
-            <li><strong>MANBench</strong></li>
+        <div class="card">
+          <h3>Representative benchmark families</h3>
+          <ul class="pill-list">
+            <li>RPM / PGM-style abstraction</li>
+            <li>ARC / EasyARC / ARC-AGI-2</li>
+            <li>BabyVision</li>
+            <li>VisualPuzzles</li>
+            <li>VisuRiddles</li>
+            <li>MME-Reasoning</li>
+            <li>PuzzleVQA</li>
+            <li>VisualSphinx</li>
+            <li>LogicVista</li>
+            <li>I-RAVEN / A-I-RAVEN / I-RAVEN-Mesh</li>
+            <li>IQBench</li>
+            <li>MANBench</li>
           </ul>
+        </div>
 
-          <h4>Main observations</h4>
+        <div class="card">
+          <h3>Main observations</h3>
           <ul>
             <li>performance is brittle under distribution shift</li>
             <li>models often rely on superficial cues instead of invariant rules</li>
             <li>perceptual limitations and reasoning errors are deeply entangled</li>
             <li>fluent verbalizations do not guarantee faithful induction</li>
           </ul>
-
-          <h4>Papers</h4>
-
-          <h5>Foundations</h5>
-          <ul class="paper-list">
-            <li><strong>Raven Progressive Matrices</strong> — John Raven and Jean Raven. <em>Handbook of Nonverbal Assessment</em>, 2003.<br>Canonical matrix-completion paradigm for abstract visual pattern induction over attributes such as shape, size, and color.</li>
-            <li><strong>Measuring Abstract Reasoning in Neural Networks</strong> — David Barrett, Felix Hill, et al. <em>ICML</em>, 2018.<br>Introduces Procedurally Generated Matrices (PGM), a controlled benchmark for testing rule induction and compositional abstract reasoning.</li>
-            <li><strong>On the Measure of Intelligence</strong> — François Chollet. <em>arXiv</em>, 2019.<br>Introduces ARC, a grid-based induction benchmark where models must infer latent rules from few input-output examples and generalize to new instances.</li>
-          </ul>
-
-          <h5>Foundational LVLM Benchmarks</h5>
-          <ul class="paper-list">
-            <li><strong>EasyARC: Evaluating Vision Language Models on True Visual Reasoning</strong> — Mert Unsal and Aylin Akkus. <em>arXiv</em>, 2025.<br>Simplifies visual input to reduce perceptual confounds and better isolate inductive reasoning in ARC-style tasks.</li>
-            <li><strong>ARC-AGI-2: A New Challenge for Frontier AI Reasoning Systems</strong> — François Chollet, Mike Knoop, et al. <em>arXiv</em>, 2025.<br>Raises the difficulty of ARC-style reasoning with stronger demands on deliberate thinking and compositional generalization.</li>
-            <li><strong>BabyVision: Visual Reasoning Beyond Language</strong> — Liang Chen, Weichu Xie, et al. <em>arXiv</em>, 2026.<br>Probes the developmental roots of induction with early-vision-style tasks, exposing failures even on simple structure-learning problems.</li>
-          </ul>
-
-          <h5>Knowledge-Decoupled Probes</h5>
-          <ul class="paper-list">
-            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br>A representative benchmark for testing inductive reasoning while minimizing reliance on world knowledge and linguistic priors.</li>
-            <li><strong>VisuRiddles: Fine-Grained Perception Is a Primary Bottleneck for Multimodal Large Language Models in Abstract Visual Reasoning</strong> — Hao Yan, Handong Zheng, et al. <em>arXiv</em>, 2025.<br>Examines induction under fine-grained perceptual demands, highlighting perception as a key bottleneck for abstract rule inference.</li>
-            <li><strong>MME-Reasoning: A Comprehensive Benchmark for Logical Reasoning in MLLMs</strong> — Jiakang Yuan, Tianshuo Peng, et al. <em>arXiv</em>, 2025.<br>Reduces perceptual burden and knowledge dependence to better isolate the reasoning component of LVLM performance.</li>
-            <li><strong>PuzzleVQA: Diagnosing Multimodal Reasoning Challenges of Language Models with Abstract Visual Patterns</strong> — Yew Ken Chia, Vernon Toh, et al. <em>ACL Findings</em>, 2024.<br>Frames visual puzzle solving as VQA, emphasizing simplicity, diversity, and rationale-based auditing of inferred rules.</li>
-            <li><strong>VisualSphinx: Large-Scale Synthetic Vision Logic Puzzles for RL</strong> — Yichen Feng, Zhangchen Xu, et al. <em>arXiv</em>, 2025.<br>Uses large-scale synthetic puzzle data to study whether inductive abilities can be strengthened through training.</li>
-            <li><strong>LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts</strong> — Yijia Xiao, Edward Sun, et al. <em>arXiv</em>, 2024.<br>A hybrid benchmark that sometimes provides hints, shifting the focus from pure rule discovery to rule grounding and execution.</li>
-          </ul>
-
-          <h5>Generalization Probes</h5>
-          <ul class="paper-list">
-            <li><strong>Stratified Rule-Aware Network for Abstract Visual Reasoning</strong> — Sheng Hu, Yuqing Ma, et al. <em>AAAI</em>, 2021.<br>Introduces I-RAVEN, a rule-annotated Raven-style benchmark used to test whether induced abstractions transfer beyond the training distribution.</li>
-            <li><strong>A-I-RAVEN and I-RAVEN-Mesh: Two New Benchmarks for Abstract Visual Reasoning</strong> — Mikołaj Małkiński and Jacek Mandziuk. <em>IJCAI</em>, 2025.<br>Extends Raven-style evaluation to unseen configurations, attributes, and visual renderings, stressing transfer and compositionality.</li>
-          </ul>
-
-          <h5>Human-Based Intelligence</h5>
-          <ul class="paper-list">
-            <li><strong>IQBench: How “Smart” Are Vision-Language Models? A Study with Human IQ Tests</strong> — Tan-Hanh Pham, Phu-Vinh Nguyen, et al. <em>arXiv</em>, 2025.<br>Uses IQ-style visual artifacts to evaluate inductive reasoning, intermediate explanations, and alignment with human problem-solving.</li>
-            <li><strong>MANBench: Is Your Multimodal Model Smarter than Human?</strong> — Han Zhou, Qitong Xu, et al. <em>ACL Findings</em>, 2025.<br>Tests inductive reasoning with maze-like and shape-based tasks, contrasting genuine abstraction with superficial pattern matching.</li>
-          </ul>
         </div>
+
+        <details class="paper-group" open>
+          <summary>Foundations</summary>
+          <ul class="paper-list">
+            <li><strong>Raven Progressive Matrices</strong> — John Raven and Jean Raven. <em>Handbook of Nonverbal Assessment</em>, 2003.<br />Canonical matrix-completion paradigm for abstract visual pattern induction over attributes such as shape, size, and color.</li>
+            <li><strong>Measuring Abstract Reasoning in Neural Networks</strong> — David Barrett, Felix Hill, et al. <em>ICML</em>, 2018.<br />Introduces Procedurally Generated Matrices (PGM), a controlled benchmark for testing rule induction and compositional abstract reasoning.</li>
+            <li><strong>On the Measure of Intelligence</strong> — François Chollet. <em>arXiv</em>, 2019.<br />Introduces ARC, a grid-based induction benchmark where models must infer latent rules from few input-output examples and generalize to new instances.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Foundational LVLM Benchmarks</summary>
+          <ul class="paper-list">
+            <li><strong>EasyARC: Evaluating Vision Language Models on True Visual Reasoning</strong> — Mert Unsal and Aylin Akkus. <em>arXiv</em>, 2025.<br />Simplifies visual input to reduce perceptual confounds and better isolate inductive reasoning in ARC-style tasks.</li>
+            <li><strong>ARC-AGI-2: A New Challenge for Frontier AI Reasoning Systems</strong> — François Chollet, Mike Knoop, et al. <em>arXiv</em>, 2025.<br />Raises the difficulty of ARC-style reasoning with stronger demands on deliberate thinking and compositional generalization.</li>
+            <li><strong>BabyVision: Visual Reasoning Beyond Language</strong> — Liang Chen, Weichu Xie, et al. <em>arXiv</em>, 2026.<br />Probes the developmental roots of induction with early-vision-style tasks, exposing failures even on simple structure-learning problems.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Knowledge-Decoupled Probes</summary>
+          <ul class="paper-list">
+            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br />A representative benchmark for testing inductive reasoning while minimizing reliance on world knowledge and linguistic priors.</li>
+            <li><strong>VisuRiddles: Fine-Grained Perception Is a Primary Bottleneck for Multimodal Large Language Models in Abstract Visual Reasoning</strong> — Hao Yan, Handong Zheng, et al. <em>arXiv</em>, 2025.<br />Examines induction under fine-grained perceptual demands, highlighting perception as a key bottleneck for abstract rule inference.</li>
+            <li><strong>MME-Reasoning: A Comprehensive Benchmark for Logical Reasoning in MLLMs</strong> — Jiakang Yuan, Tianshuo Peng, et al. <em>arXiv</em>, 2025.<br />Reduces perceptual burden and knowledge dependence to better isolate the reasoning component of LVLM performance.</li>
+            <li><strong>PuzzleVQA: Diagnosing Multimodal Reasoning Challenges of Language Models with Abstract Visual Patterns</strong> — Yew Ken Chia, Vernon Toh, et al. <em>ACL Findings</em>, 2024.<br />Frames visual puzzle solving as VQA, emphasizing simplicity, diversity, and rationale-based auditing of inferred rules.</li>
+            <li><strong>VisualSphinx: Large-Scale Synthetic Vision Logic Puzzles for RL</strong> — Yichen Feng, Zhangchen Xu, et al. <em>arXiv</em>, 2025.<br />Uses large-scale synthetic puzzle data to study whether inductive abilities can be strengthened through training.</li>
+            <li><strong>LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts</strong> — Yijia Xiao, Edward Sun, et al. <em>arXiv</em>, 2024.<br />A hybrid benchmark that sometimes provides hints, shifting the focus from pure rule discovery to rule grounding and execution.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Generalization Probes</summary>
+          <ul class="paper-list">
+            <li><strong>Stratified Rule-Aware Network for Abstract Visual Reasoning</strong> — Sheng Hu, Yuqing Ma, et al. <em>AAAI</em>, 2021.<br />Introduces I-RAVEN, a rule-annotated Raven-style benchmark used to test whether induced abstractions transfer beyond the training distribution.</li>
+            <li><strong>A-I-RAVEN and I-RAVEN-Mesh: Two New Benchmarks for Abstract Visual Reasoning</strong> — Mikołaj Małkiński and Jacek Mandziuk. <em>IJCAI</em>, 2025.<br />Extends Raven-style evaluation to unseen configurations, attributes, and visual renderings, stressing transfer and compositionality.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Human-Based Intelligence</summary>
+          <ul class="paper-list">
+            <li><strong>IQBench: How “Smart” Are Vision-Language Models? A Study with Human IQ Tests</strong> — Tan-Hanh Pham, Phu-Vinh Nguyen, et al. <em>arXiv</em>, 2025.<br />Uses IQ-style visual artifacts to evaluate inductive reasoning, intermediate explanations, and alignment with human problem-solving.</li>
+            <li><strong>MANBench: Is Your Multimodal Model Smarter than Human?</strong> — Han Zhou, Qitong Xu, et al. <em>ACL Findings</em>, 2025.<br />Tests inductive reasoning with maze-like and shape-based tasks, contrasting genuine abstraction with superficial pattern matching.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="analogical-reasoning">
+    <section id="analogical-reasoning" class="section">
       <div class="container">
+        <h2>Analogical Reasoning</h2>
+
         <div class="card">
-          <h3>Analogical Reasoning</h3>
-
-          <h4>Focus</h4>
+          <h3>Focus</h3>
           <p>
-            These benchmarks test whether LVLMs can identify <strong>relational structure</strong>,
-            not just recognize individual objects or symbols.
+            These benchmarks test whether LVLMs can identify <strong>relational structure</strong>, not just
+            recognize individual objects or symbols.
           </p>
+        </div>
 
-          <h4>Representative benchmark families</h4>
-          <ul>
-            <li><strong>Bongard Problems</strong></li>
-            <li><strong>Bongard-HOI</strong></li>
-            <li><strong>Bongard-OpenWorld</strong></li>
-            <li><strong>Bongard in Wonderland</strong></li>
-            <li><strong>Bongard-RWR+</strong></li>
-            <li><strong>REBUS</strong></li>
-            <li><strong>COLUMBUS</strong></li>
-            <li><strong>MARVEL</strong></li>
-            <li><strong>VisualPuzzles</strong></li>
-            <li><strong>VOILA</strong></li>
+        <div class="card">
+          <h3>Representative benchmark families</h3>
+          <ul class="pill-list">
+            <li>Bongard Problems</li>
+            <li>Bongard-HOI</li>
+            <li>Bongard-OpenWorld</li>
+            <li>Bongard in Wonderland</li>
+            <li>Bongard-RWR+</li>
+            <li>REBUS</li>
+            <li>COLUMBUS</li>
+            <li>MARVEL</li>
+            <li>VisualPuzzles</li>
+            <li>VOILA</li>
           </ul>
+        </div>
 
-          <h4>Main observations</h4>
+        <div class="card">
+          <h3>Main observations</h3>
           <ul>
             <li>LVLMs often over-index on local features like color, texture, or object count</li>
             <li>they struggle to preserve relational alignment even when perception succeeds</li>
             <li>analogy performance degrades under small variations and new contexts</li>
             <li>literal description often replaces genuine relational transfer</li>
           </ul>
-
-          <h4>Papers</h4>
-
-          <h5>Contrastive Concept Discovery</h5>
-          <ul class="paper-list">
-            <li><strong>Bongard Problems</strong> — Mikhail M. Bongard. <em>Pattern Recognition</em>, 1970.<br>Foundational contrastive visual concept-discovery paradigm: infer the abstract concept separating positive from negative image sets.</li>
-            <li><strong>Bongard-HOI: Benchmarking Few-Shot Visual Reasoning for Human-Object Interactions</strong> — Huaizu Jiang, Xiaojian Ma, et al. <em>CVPR</em>, 2022.<br>Extends Bongard-style reasoning to natural images with human-object interactions, probing relational perception beyond synthetic primitives.</li>
-            <li><strong>Bongard-OpenWorld: Few-Shot Reasoning for Free-Form Visual Concepts in the Real World</strong> — Rujie Wu, Xiaojian Ma, et al. <em>ICLR</em>, 2024.<br>Relaxes closed-world assumptions by introducing open-vocabulary visual concepts in real-world settings.</li>
-            <li><strong>Bongard in Wonderland: Visual Puzzles That Still Make AI Go Mad?</strong> — Antonia Wüst, Tim Tobiasch, et al. <em>ICML</em>, 2025.<br>Revisits classic Bongard-style abstraction with visually simple but diagnostically precise concept distinctions.</li>
-            <li><strong>Bongard-RWR+: Real-World Representations of Fine-Grained Concepts in Bongard Problems</strong> — Szymon Pawlonka, Mikołaj Małkiński, and Jacek Mandziuk. <em>arXiv</em>, 2025.<br>Grounds fine-grained Bongard concepts in real-world imagery, enabling comparison between synthetic and natural visual formulations.</li>
-          </ul>
-
-          <h5>Relational and Structural Mapping</h5>
-          <ul class="paper-list">
-            <li><strong>REBUS: A Robust Evaluation Benchmark of Understanding Symbols</strong> — Andrew Gritsevskiy, Arjun Panickssery, et al. <em>arXiv</em>, 2024.<br>Tests whether LVLMs can move beyond literal symbol recognition and perform relational mapping from visual wordplay to language.</li>
-            <li><strong>COLUMBUS: Evaluating Cognitive Lateral Understanding Through Multiple-Choice Rebuses</strong> — Koen Kraaijveld, Yifan Jiang, et al. <em>arXiv</em>, 2024.<br>Evaluates analogical mapping and lateral interpretation in rebus-style multiple-choice settings.</li>
-            <li><strong>MARVEL: Multidimensional Abstraction and Reasoning through Visual Evaluation and Learning</strong> — Yifan Jiang, Jiarui Zhang, et al. <em>NeurIPS</em>, 2024.<br>Uses geometric and abstract shapes to test whether models can preserve relational alignment, separating representation from analogy mapping.</li>
-            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br>Includes knowledge-light analogy tasks of varying difficulty, exposing failures in structural mapping rather than world-knowledge recall.</li>
-            <li><strong>VOILA: Evaluation of MLLMs for Perceptual Understanding and Analogical Reasoning</strong> — Nilay Yilmaz, Maitreya Patel, et al. <em>ICLR</em>, 2025.<br>Couples analogical reasoning with heavier perceptual demands, testing transfer across explicit visual analogy instances.</li>
-          </ul>
-
-          <h5>Analysis-Linked Rebus Evidence</h5>
-          <ul class="paper-list">
-            <li><strong>A Large and Diverse Multimodal Benchmark for Evaluating the Ability of Vision-Language Models to Understand Rebus Puzzles</strong> — Trishanu Das, Abhilash Nandy, et al. <em>arXiv</em>, 2025.<br>Provides additional evidence that LVLMs often default to literal symbolic descriptions instead of the relational mapping needed for rebus solving.</li>
-          </ul>
         </div>
+
+        <details class="paper-group" open>
+          <summary>Contrastive Concept Discovery</summary>
+          <ul class="paper-list">
+            <li><strong>Bongard Problems</strong> — Mikhail M. Bongard. <em>Pattern Recognition</em>, 1970.<br />Foundational contrastive visual concept-discovery paradigm: infer the abstract concept separating positive from negative image sets.</li>
+            <li><strong>Bongard-HOI: Benchmarking Few-Shot Visual Reasoning for Human-Object Interactions</strong> — Huaizu Jiang, Xiaojian Ma, et al. <em>CVPR</em>, 2022.<br />Extends Bongard-style reasoning to natural images with human-object interactions, probing relational perception beyond synthetic primitives.</li>
+            <li><strong>Bongard-OpenWorld: Few-Shot Reasoning for Free-Form Visual Concepts in the Real World</strong> — Rujie Wu, Xiaojian Ma, et al. <em>ICLR</em>, 2024.<br />Relaxes closed-world assumptions by introducing open-vocabulary visual concepts in real-world settings.</li>
+            <li><strong>Bongard in Wonderland: Visual Puzzles That Still Make AI Go Mad?</strong> — Antonia Wüst, Tim Tobiasch, et al. <em>ICML</em>, 2025.<br />Revisits classic Bongard-style abstraction with visually simple but diagnostically precise concept distinctions.</li>
+            <li><strong>Bongard-RWR+: Real-World Representations of Fine-Grained Concepts in Bongard Problems</strong> — Szymon Pawlonka, Mikołaj Małkiński, and Jacek Mandziuk. <em>arXiv</em>, 2025.<br />Grounds fine-grained Bongard concepts in real-world imagery, enabling comparison between synthetic and natural visual formulations.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Relational and Structural Mapping</summary>
+          <ul class="paper-list">
+            <li><strong>REBUS: A Robust Evaluation Benchmark of Understanding Symbols</strong> — Andrew Gritsevskiy, Arjun Panickssery, et al. <em>arXiv</em>, 2024.<br />Tests whether LVLMs can move beyond literal symbol recognition and perform relational mapping from visual wordplay to language.</li>
+            <li><strong>COLUMBUS: Evaluating Cognitive Lateral Understanding Through Multiple-Choice Rebuses</strong> — Koen Kraaijveld, Yifan Jiang, et al. <em>arXiv</em>, 2024.<br />Evaluates analogical mapping and lateral interpretation in rebus-style multiple-choice settings.</li>
+            <li><strong>MARVEL: Multidimensional Abstraction and Reasoning through Visual Evaluation and Learning</strong> — Yifan Jiang, Jiarui Zhang, et al. <em>NeurIPS</em>, 2024.<br />Uses geometric and abstract shapes to test whether models can preserve relational alignment, separating representation from analogy mapping.</li>
+            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br />Includes knowledge-light analogy tasks of varying difficulty, exposing failures in structural mapping rather than world-knowledge recall.</li>
+            <li><strong>VOILA: Evaluation of MLLMs for Perceptual Understanding and Analogical Reasoning</strong> — Nilay Yilmaz, Maitreya Patel, et al. <em>ICLR</em>, 2025.<br />Couples analogical reasoning with heavier perceptual demands, testing transfer across explicit visual analogy instances.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Analysis-Linked Rebus Evidence</summary>
+          <ul class="paper-list">
+            <li><strong>A Large and Diverse Multimodal Benchmark for Evaluating the Ability of Vision-Language Models to Understand Rebus Puzzles</strong> — Trishanu Das, Abhilash Nandy, et al. <em>arXiv</em>, 2025.<br />Provides additional evidence that LVLMs often default to literal symbolic descriptions instead of the relational mapping needed for rebus solving.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="algorithmic-reasoning">
+    <section id="algorithmic-reasoning" class="section alt">
       <div class="container">
+        <h2>Algorithmic Reasoning</h2>
+
         <div class="card">
-          <h3>Algorithmic Reasoning</h3>
-
-          <h4>Focus</h4>
+          <h3>Focus</h3>
           <p>
-            These tasks probe whether models can follow procedures, maintain evolving state,
-            and execute multi-step reasoning over time.
+            These tasks probe whether models can follow procedures, maintain evolving state, and execute
+            multi-step reasoning over time.
           </p>
+        </div>
 
-          <h4>Representative benchmark families</h4>
-          <ul>
-            <li><strong>PUZZLES</strong></li>
-            <li><strong>AlgoPuzzleVQA</strong></li>
-            <li><strong>VisualPuzzles (algorithmic instances)</strong></li>
-            <li><strong>Jigsaw-Puzzles</strong></li>
-            <li><strong>LEGO-Puzzles</strong></li>
-            <li><strong>PuzzleBench</strong></li>
-            <li><strong>ING-VP</strong></li>
-            <li><strong>BALROG</strong></li>
-            <li><strong>PuzzlePlex</strong></li>
-            <li><strong>ENIGMAEVAL</strong></li>
+        <div class="card">
+          <h3>Representative benchmark families</h3>
+          <ul class="pill-list">
+            <li>PUZZLES</li>
+            <li>AlgoPuzzleVQA</li>
+            <li>VisualPuzzles (algorithmic instances)</li>
+            <li>Jigsaw-Puzzles</li>
+            <li>LEGO-Puzzles</li>
+            <li>PuzzleBench</li>
+            <li>ING-VP</li>
+            <li>BALROG</li>
+            <li>PuzzlePlex</li>
+            <li>ENIGMAEVAL</li>
           </ul>
+        </div>
 
-          <h4>Main observations</h4>
+        <div class="card">
+          <h3>Main observations</h3>
           <ul>
             <li>strong degradation with increasing procedural depth</li>
             <li>failures often arise from weak state tracking rather than missing instructions</li>
             <li>multi-step interaction exposes a sharp <strong>perception-execution gap</strong></li>
             <li>chain-of-thought-style explanations can remain plausible while execution fails</li>
           </ul>
-
-          <h4>Papers</h4>
-
-          <h5>Static Symbolic Puzzles</h5>
-          <ul class="paper-list">
-            <li><strong>PUZZLES: A Benchmark for Neural Algorithmic Reasoning</strong> — Benjamin Estermann, Luca A. Lanzendörfer, et al. <em>NeurIPS</em>, 2024.<br>Programmatically generated puzzles with varying size and difficulty, designed to test generalization in algorithmic execution over a well-defined action space.</li>
-            <li><strong>AlgoPuzzleVQA: Diagnosing Multimodal Reasoning Challenges of Language Models with Algorithmic Multimodal Puzzles</strong> — Deepanway Ghosal, Vernon Toh, et al. <em>NAACL</em>, 2025.<br>Grid-based puzzles in a VQA format that probe action optimization, combinatorics, search logic, multimodal arithmetic, and graph reasoning.</li>
-            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br>Its algorithmic instances emphasize procedural execution, including perceptual constraint satisfaction, combinatorics, and multimodal arithmetic.</li>
-          </ul>
-
-          <h5>Spatially Procedural Puzzles</h5>
-          <ul class="paper-list">
-            <li><strong>Jigsaw-Puzzles: From Seeing to Understanding to Reasoning in Vision-Language Models</strong> — Zesen Lyu, Dandan Zhang, et al. <em>arXiv</em>, 2025.<br>Evaluates procedural reasoning through multi-step spatial manipulation, requiring coherent state updates across assembly steps.</li>
-            <li><strong>LEGO-Puzzles: How Good Are MLLMs at Multi-Step Spatial Reasoning?</strong> — Kexian Tang, Junyao Gao, et al. <em>arXiv</em>, 2025.<br>Tests whether models can maintain accumulating spatial representations under physical and geometric constraints during multi-step construction.</li>
-          </ul>
-
-          <h5>Interactive Planning</h5>
-          <ul class="paper-list">
-            <li><strong>PuzzleBench: A Fully Dynamic Evaluation Framework for Large Multimodal Models on Puzzle Solving</strong> — Zeyu Zhang, Zijian Chen, et al. <em>arXiv</em>, 2025.<br>Introduces an interactive environment where LVLMs must choose sequential actions and preserve verifiable intermediate states.</li>
-            <li><strong>ING-VP: MLLMs Cannot Play Easy Vision-Based Games Yet</strong> — Haoran Zhang, Hangyu Guo, et al. <em>arXiv</em>, 2024.<br>Uses simple minimally interactive games to separate perceptual understanding from action implementation and planning.</li>
-            <li><strong>BALROG: Benchmarking Agentic LLM and VLM Reasoning on Games</strong> — Davide Paglieri, Bartłomiej Cupiał, et al. <em>ICLR</em>, 2025.<br>Frames reasoning as acting in a dynamic environment with delayed rewards, stressing long-horizon agentic interaction.</li>
-            <li><strong>PuzzlePlex: Benchmarking Foundation Models on Reasoning and Planning with Puzzles</strong> — Yitao Long, Yuru Jiang, et al. <em>arXiv</em>, 2025.<br>Focuses on multi-stage interactive execution in deterministic and stochastic settings, probing strategic coherence under evolving constraints.</li>
-            <li><strong>ENIGMAEVAL: A Benchmark of Long Multimodal Reasoning Challenges</strong> — Clinton J. Wang, Dean Lee, et al. <em>arXiv</em>, 2025.<br>Introduces difficult multimodal challenges with unambiguous solutions to expose the limits of procedural cognition.</li>
-          </ul>
         </div>
+
+        <details class="paper-group" open>
+          <summary>Static Symbolic Puzzles</summary>
+          <ul class="paper-list">
+            <li><strong>PUZZLES: A Benchmark for Neural Algorithmic Reasoning</strong> — Benjamin Estermann, Luca A. Lanzendörfer, et al. <em>NeurIPS</em>, 2024.<br />Programmatically generated puzzles with varying size and difficulty, designed to test generalization in algorithmic execution over a well-defined action space.</li>
+            <li><strong>AlgoPuzzleVQA: Diagnosing Multimodal Reasoning Challenges of Language Models with Algorithmic Multimodal Puzzles</strong> — Deepanway Ghosal, Vernon Toh, et al. <em>NAACL</em>, 2025.<br />Grid-based puzzles in a VQA format that probe action optimization, combinatorics, search logic, multimodal arithmetic, and graph reasoning.</li>
+            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br />Its algorithmic instances emphasize procedural execution, including perceptual constraint satisfaction, combinatorics, and multimodal arithmetic.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Spatially Procedural Puzzles</summary>
+          <ul class="paper-list">
+            <li><strong>Jigsaw-Puzzles: From Seeing to Understanding to Reasoning in Vision-Language Models</strong> — Zesen Lyu, Dandan Zhang, et al. <em>arXiv</em>, 2025.<br />Evaluates procedural reasoning through multi-step spatial manipulation, requiring coherent state updates across assembly steps.</li>
+            <li><strong>LEGO-Puzzles: How Good Are MLLMs at Multi-Step Spatial Reasoning?</strong> — Kexian Tang, Junyao Gao, et al. <em>arXiv</em>, 2025.<br />Tests whether models can maintain accumulating spatial representations under physical and geometric constraints during multi-step construction.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Interactive Planning</summary>
+          <ul class="paper-list">
+            <li><strong>PuzzleBench: A Fully Dynamic Evaluation Framework for Large Multimodal Models on Puzzle Solving</strong> — Zeyu Zhang, Zijian Chen, et al. <em>arXiv</em>, 2025.<br />Introduces an interactive environment where LVLMs must choose sequential actions and preserve verifiable intermediate states.</li>
+            <li><strong>ING-VP: MLLMs Cannot Play Easy Vision-Based Games Yet</strong> — Haoran Zhang, Hangyu Guo, et al. <em>arXiv</em>, 2024.<br />Uses simple minimally interactive games to separate perceptual understanding from action implementation and planning.</li>
+            <li><strong>BALROG: Benchmarking Agentic LLM and VLM Reasoning on Games</strong> — Davide Paglieri, Bartłomiej Cupiał, et al. <em>ICLR</em>, 2025.<br />Frames reasoning as acting in a dynamic environment with delayed rewards, stressing long-horizon agentic interaction.</li>
+            <li><strong>PuzzlePlex: Benchmarking Foundation Models on Reasoning and Planning with Puzzles</strong> — Yitao Long, Yuru Jiang, et al. <em>arXiv</em>, 2025.<br />Focuses on multi-stage interactive execution in deterministic and stochastic settings, probing strategic coherence under evolving constraints.</li>
+            <li><strong>ENIGMAEVAL: A Benchmark of Long Multimodal Reasoning Challenges</strong> — Clinton J. Wang, Dean Lee, et al. <em>arXiv</em>, 2025.<br />Introduces difficult multimodal challenges with unambiguous solutions to expose the limits of procedural cognition.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="deductive-reasoning">
+    <section id="deductive-reasoning" class="section">
       <div class="container">
+        <h2>Deductive Reasoning</h2>
+
         <div class="card">
-          <h3>Deductive Reasoning</h3>
-
-          <h4>Focus</h4>
+          <h3>Focus</h3>
           <p>
-            These benchmarks test whether LVLMs can apply explicit rules and constraints
-            to visually grounded entities and maintain global consistency.
+            These benchmarks test whether LVLMs can apply explicit rules and constraints to visually grounded entities
+            and maintain global consistency.
           </p>
+        </div>
 
-          <h4>Representative benchmark families</h4>
-          <ul>
-            <li><strong>LogicVista</strong></li>
-            <li><strong>VisuLogic</strong></li>
-            <li><strong>VisualSphinx</strong></li>
-            <li><strong>MME-Reasoning</strong></li>
-            <li><strong>VisualPuzzles (deductive puzzles)</strong></li>
-            <li><strong>Sudoku-Bench</strong></li>
-            <li><strong>VGRP-Bench</strong></li>
-            <li><strong>PUZZLES</strong></li>
+        <div class="card">
+          <h3>Representative benchmark families</h3>
+          <ul class="pill-list">
+            <li>LogicVista</li>
+            <li>VisuLogic</li>
+            <li>VisualSphinx</li>
+            <li>MME-Reasoning</li>
+            <li>VisualPuzzles (deductive puzzles)</li>
+            <li>Sudoku-Bench</li>
+            <li>VGRP-Bench</li>
+            <li>PUZZLES</li>
           </ul>
+        </div>
 
-          <h4>Main observations</h4>
+        <div class="card">
+          <h3>Main observations</h3>
           <ul>
             <li>visual grounding errors often propagate into logical failure</li>
             <li>models struggle to integrate multiple constraints into a globally consistent solution</li>
             <li>local correctness does not imply global validity</li>
             <li>coherent explanations often do not reflect correct entailment</li>
           </ul>
-
-          <h4>Papers</h4>
-
-          <h5>Symbolic Constraints</h5>
-          <ul class="paper-list">
-            <li><strong>LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts</strong> — Yijia Xiao, Edward Sun, et al. <em>arXiv</em>, 2024.<br>Evaluates deduction over facts extracted from images, requiring models to bind visual entities and relations to symbols that support formal logical execution.</li>
-            <li><strong>VisuLogic: A Benchmark for Evaluating Visual Reasoning in Multi-Modal Large Language Models</strong> — Weiye Xu, Jiahao Wang, et al. <em>arXiv</em>, 2025.<br>Emphasizes visually grounded deduction with hard-to-articulate visual instances, testing whether models can reason without leaning on verbal reformulation.</li>
-            <li><strong>VisualSphinx: Large-Scale Synthetic Vision Logic Puzzles for RL</strong> — Yichen Feng, Zhangchen Xu, et al. <em>arXiv</em>, 2025.<br>Treats deductive reasoning as a capability that can be strengthened through training on synthetic visual logic puzzles.</li>
-            <li><strong>MME-Reasoning: A Comprehensive Benchmark for Logical Reasoning in MLLMs</strong> — Jiakang Yuan, Tianshuo Peng, et al. <em>arXiv</em>, 2025.<br>Reduces perceptual burden and knowledge dependence to more cleanly isolate deductive reasoning ability.</li>
-            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br>Its deductive puzzle instances focus on explicit rule application while minimizing reliance on outside knowledge.</li>
-          </ul>
-
-          <h5>Grid-Based Constraints</h5>
-          <ul class="paper-list">
-            <li><strong>Sudoku-Bench: Evaluating Creative Reasoning with Sudoku Variants</strong> — Jeffrey Seely, Yuki Imajuku, et al. <em>arXiv</em>, 2025.<br>Tests whether LVLMs can maintain global consistency while making local assignments under explicit Sudoku-style constraints.</li>
-            <li><strong>VGRP-Bench: Visual Grid Reasoning Puzzle Benchmark for Large Vision-Language Models</strong> — Yufan Ren, Konstantinos Tertikas, et al. <em>arXiv</em>, 2025.<br>Extends grid-based deduction to diverse rule systems, grid sizes, and decision spaces while disentangling reasoning from visual perception.</li>
-            <li><strong>PUZZLES: A Benchmark for Neural Algorithmic Reasoning</strong> — Benjamin Estermann, Luca A. Lanzendörfer, et al. <em>NeurIPS</em>, 2024.<br>Also supports deductive evaluation by testing constraint propagation through multi-step symbolic manipulation in structured grid settings.</li>
-          </ul>
         </div>
+
+        <details class="paper-group" open>
+          <summary>Symbolic Constraints</summary>
+          <ul class="paper-list">
+            <li><strong>LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts</strong> — Yijia Xiao, Edward Sun, et al. <em>arXiv</em>, 2024.<br />Evaluates deduction over facts extracted from images, requiring models to bind visual entities and relations to symbols that support formal logical execution.</li>
+            <li><strong>VisuLogic: A Benchmark for Evaluating Visual Reasoning in Multi-Modal Large Language Models</strong> — Weiye Xu, Jiahao Wang, et al. <em>arXiv</em>, 2025.<br />Emphasizes visually grounded deduction with hard-to-articulate visual instances, testing whether models can reason without leaning on verbal reformulation.</li>
+            <li><strong>VisualSphinx: Large-Scale Synthetic Vision Logic Puzzles for RL</strong> — Yichen Feng, Zhangchen Xu, et al. <em>arXiv</em>, 2025.<br />Treats deductive reasoning as a capability that can be strengthened through training on synthetic visual logic puzzles.</li>
+            <li><strong>MME-Reasoning: A Comprehensive Benchmark for Logical Reasoning in MLLMs</strong> — Jiakang Yuan, Tianshuo Peng, et al. <em>arXiv</em>, 2025.<br />Reduces perceptual burden and knowledge dependence to more cleanly isolate deductive reasoning ability.</li>
+            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br />Its deductive puzzle instances focus on explicit rule application while minimizing reliance on outside knowledge.</li>
+          </ul>
+        </details>
+
+        <details class="paper-group">
+          <summary>Grid-Based Constraints</summary>
+          <ul class="paper-list">
+            <li><strong>Sudoku-Bench: Evaluating Creative Reasoning with Sudoku Variants</strong> — Jeffrey Seely, Yuki Imajuku, et al. <em>arXiv</em>, 2025.<br />Tests whether LVLMs can maintain global consistency while making local assignments under explicit Sudoku-style constraints.</li>
+            <li><strong>VGRP-Bench: Visual Grid Reasoning Puzzle Benchmark for Large Vision-Language Models</strong> — Yufan Ren, Konstantinos Tertikas, et al. <em>arXiv</em>, 2025.<br />Extends grid-based deduction to diverse rule systems, grid sizes, and decision spaces while disentangling reasoning from visual perception.</li>
+            <li><strong>PUZZLES: A Benchmark for Neural Algorithmic Reasoning</strong> — Benjamin Estermann, Luca A. Lanzendörfer, et al. <em>NeurIPS</em>, 2024.<br />Also supports deductive evaluation by testing constraint propagation through multi-step symbolic manipulation in structured grid settings.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <section class="section" id="geometric-spatial-reasoning">
+    <section id="geometric-spatial-reasoning" class="section alt">
       <div class="container">
+        <h2>Geometric / Spatial Reasoning</h2>
+
         <div class="card">
-          <h3>Geometric / Spatial Reasoning</h3>
-
-          <h4>Focus</h4>
+          <h3>Focus</h3>
           <p>
-            This category stress-tests spatial grounding, geometric transformations,
-            mental rotation, structural consistency, and spatial state tracking.
+            This category stress-tests spatial grounding, geometric transformations, mental rotation,
+            structural consistency, and spatial state tracking.
           </p>
+        </div>
 
-          <h4>Representative benchmark families</h4>
-          <ul>
-            <li><strong>A-I-RAVEN</strong></li>
-            <li><strong>I-RAVEN-Mesh</strong></li>
-            <li><strong>BabyVision</strong></li>
-            <li><strong>VisualPuzzles</strong></li>
-            <li><strong>VisuRiddles</strong></li>
-            <li><strong>Bongard-style geometric puzzles</strong></li>
-            <li><strong>VOILA</strong></li>
-            <li><strong>Jigsaw-Puzzles</strong></li>
-            <li><strong>LEGO-Puzzles</strong></li>
-            <li><strong>BALROG</strong></li>
-            <li><strong>VGRP-Bench</strong></li>
-            <li><strong>PUZZLES</strong></li>
-            <li><strong>VisuLogic / LogicVista</strong></li>
-            <li><strong>GeoSketch</strong></li>
-            <li><strong>Rubik’s Cube-style tasks</strong></li>
+        <div class="card">
+          <h3>Representative benchmark families</h3>
+          <ul class="pill-list">
+            <li>A-I-RAVEN</li>
+            <li>I-RAVEN-Mesh</li>
+            <li>BabyVision</li>
+            <li>VisualPuzzles</li>
+            <li>VisuRiddles</li>
+            <li>Bongard-style geometric puzzles</li>
+            <li>VOILA</li>
+            <li>Jigsaw-Puzzles</li>
+            <li>LEGO-Puzzles</li>
+            <li>BALROG</li>
+            <li>VGRP-Bench</li>
+            <li>PUZZLES</li>
+            <li>VisuLogic / LogicVista</li>
+            <li>GeoSketch</li>
+            <li>Rubik’s Cube-style tasks</li>
           </ul>
+        </div>
 
-          <h4>Main observations</h4>
+        <div class="card">
+          <h3>Main observations</h3>
           <ul>
             <li>models are sensitive to superficial spatial cues</li>
             <li>geometric errors accumulate over multi-step execution</li>
             <li>spatial grounding is often the bottleneck behind apparent deductive failures</li>
             <li>fluent explanations frequently lack spatial fidelity</li>
           </ul>
+        </div>
 
-          <h4>Papers</h4>
-
-          <h5>Geometric Transformations in Inductive Puzzles</h5>
+        <details class="paper-group" open>
+          <summary>Geometric Transformations in Inductive Puzzles</summary>
           <ul class="paper-list">
-            <li><strong>A-I-RAVEN and I-RAVEN-Mesh: Two New Benchmarks for Abstract Visual Reasoning</strong> — Mikołaj Małkiński and Jacek Mańdziuk. <em>IJCAI</em>, 2025.<br>Extends Raven-style abstract reasoning with stronger geometric attributes, testing whether models can generalize spatial relations beyond surface appearance.</li>
-            <li><strong>BabyVision: Visual Reasoning Beyond Language</strong> — Liang Chen, Weichu Xie, et al. <em>arXiv</em>, 2026.<br>Shows that LVLMs struggle even with simple geometric primitives such as rotation and reflection when other basic attributes are present.</li>
-            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br>Includes geometry-heavy visual puzzles where success depends on fine-grained spatial perception and generalization across diverse visual forms.</li>
-            <li><strong>VisuRiddles: Fine-Grained Perception Is a Primary Bottleneck for Multimodal Large Language Models in Abstract Visual Reasoning</strong> — Hao Yan, Handong Zheng, et al. <em>arXiv</em>, 2025.<br>Highlights how geometric regularities are often missed when perception and spatial abstraction interact.</li>
+            <li><strong>A-I-RAVEN and I-RAVEN-Mesh: Two New Benchmarks for Abstract Visual Reasoning</strong> — Mikołaj Małkiński and Jacek Mańdziuk. <em>IJCAI</em>, 2025.<br />Extends Raven-style abstract reasoning with stronger geometric attributes, testing whether models can generalize spatial relations beyond surface appearance.</li>
+            <li><strong>BabyVision: Visual Reasoning Beyond Language</strong> — Liang Chen, Weichu Xie, et al. <em>arXiv</em>, 2026.<br />Shows that LVLMs struggle even with simple geometric primitives such as rotation and reflection when other basic attributes are present.</li>
+            <li><strong>VisualPuzzles: Decoupling Multimodal Reasoning Evaluation from Domain Knowledge</strong> — Yueqi Song, Tianyue Ou, et al. <em>arXiv</em>, 2025.<br />Includes geometry-heavy visual puzzles where success depends on fine-grained spatial perception and generalization across diverse visual forms.</li>
+            <li><strong>VisuRiddles: Fine-Grained Perception Is a Primary Bottleneck for Multimodal Large Language Models in Abstract Visual Reasoning</strong> — Hao Yan, Handong Zheng, et al. <em>arXiv</em>, 2025.<br />Highlights how geometric regularities are often missed when perception and spatial abstraction interact.</li>
           </ul>
+        </details>
 
-          <h5>Spatial Structure in Analogical Reasoning</h5>
+        <details class="paper-group">
+          <summary>Spatial Structure in Analogical Reasoning</summary>
           <ul class="paper-list">
-            <li><strong>Bongard in Wonderland: Visual Puzzles That Still Make AI Go Mad?</strong> — Antonia Wüst, Tim Tobiasch, et al. <em>ICML</em>, 2025.<br>Uses Bongard-style visual concepts built around spatial relations such as enclosure, alignment, and symmetry.</li>
-            <li><strong>Bongard-RWR+: Real-World Representations of Fine-Grained Concepts in Bongard Problems</strong> — Szymon Pawlonka, Mikołaj Małkiński, and Jacek Mańdziuk. <em>arXiv</em>, 2025.<br>Tests whether models can preserve spatial concept structure in more realistic visual settings.</li>
-            <li><strong>VOILA: Evaluation of MLLMs for Perceptual Understanding and Analogical Reasoning</strong> — Nilay Yilmaz, Maitreya Patel, et al. <em>ICLR</em>, 2025.<br>Probes whether models can transfer analogical structure while preserving the spatial relations that define the analogy.</li>
+            <li><strong>Bongard in Wonderland: Visual Puzzles That Still Make AI Go Mad?</strong> — Antonia Wüst, Tim Tobiasch, et al. <em>ICML</em>, 2025.<br />Uses Bongard-style visual concepts built around spatial relations such as enclosure, alignment, and symmetry.</li>
+            <li><strong>Bongard-RWR+: Real-World Representations of Fine-Grained Concepts in Bongard Problems</strong> — Szymon Pawlonka, Mikołaj Małkiński, and Jacek Mańdziuk. <em>arXiv</em>, 2025.<br />Tests whether models can preserve spatial concept structure in more realistic visual settings.</li>
+            <li><strong>VOILA: Evaluation of MLLMs for Perceptual Understanding and Analogical Reasoning</strong> — Nilay Yilmaz, Maitreya Patel, et al. <em>ICLR</em>, 2025.<br />Probes whether models can transfer analogical structure while preserving the spatial relations that define the analogy.</li>
           </ul>
+        </details>
 
-          <h5>Spatial State Tracking in Procedural Tasks</h5>
+        <details class="paper-group">
+          <summary>Spatial State Tracking in Procedural Tasks</summary>
           <ul class="paper-list">
-            <li><strong>Jigsaw-Puzzles: From Seeing to Understanding to Reasoning in Vision-Language Models</strong> — Zesen Lyu, Dandan Zhang, et al. <em>arXiv</em>, 2025.<br>Evaluates whether LVLMs can track part configurations and predict spatial transformations across intermediate assembly steps.</li>
-            <li><strong>LEGO-Puzzles: How Good Are MLLMs at Multi-Step Spatial Reasoning?</strong> — Kexian Tang, Junyao Gao, et al. <em>arXiv</em>, 2025.<br>Tests multi-step spatial reasoning under construction-style constraints where models must maintain coherent intermediate states.</li>
-            <li><strong>BALROG: Benchmarking Agentic LLM and VLM Reasoning on Games</strong> — Davide Paglieri, Bartłomiej Cupiał, et al. <em>ICLR</em>, 2025.<br>Embeds spatial reasoning into long-horizon interaction, where correct action selection depends on stable spatial state tracking.</li>
+            <li><strong>Jigsaw-Puzzles: From Seeing to Understanding to Reasoning in Vision-Language Models</strong> — Zesen Lyu, Dandan Zhang, et al. <em>arXiv</em>, 2025.<br />Evaluates whether LVLMs can track part configurations and predict spatial transformations across intermediate assembly steps.</li>
+            <li><strong>LEGO-Puzzles: How Good Are MLLMs at Multi-Step Spatial Reasoning?</strong> — Kexian Tang, Junyao Gao, et al. <em>arXiv</em>, 2025.<br />Tests multi-step spatial reasoning under construction-style constraints where models must maintain coherent intermediate states.</li>
+            <li><strong>BALROG: Benchmarking Agentic LLM and VLM Reasoning on Games</strong> — Davide Paglieri, Bartłomiej Cupiał, et al. <em>ICLR</em>, 2025.<br />Embeds spatial reasoning into long-horizon interaction, where correct action selection depends on stable spatial state tracking.</li>
           </ul>
+        </details>
 
-          <h5>Spatial Grounding in Deductive Constraints</h5>
+        <details class="paper-group">
+          <summary>Spatial Grounding in Deductive Constraints</summary>
           <ul class="paper-list">
-            <li><strong>VGRP-Bench: Visual Grid Reasoning Puzzle Benchmark for Large Vision-Language Models</strong> — Yufan Ren, Konstantinos Tertikas, et al. <em>arXiv</em>, 2025.<br>Uses grid-structured problems where deduction depends on accurate interpretation of spatial configuration and rule propagation.</li>
-            <li><strong>PUZZLES: A Benchmark for Neural Algorithmic Reasoning</strong> — Benjamin Estermann, Luca A. Lanzendörfer, et al. <em>NeurIPS</em>, 2024.<br>Supports spatially grounded deduction through structured puzzle layouts that require constraint propagation over visual states.</li>
-            <li><strong>VisuLogic: A Benchmark for Evaluating Visual Reasoning in Multi-Modal Large Language Models</strong> — Weiye Xu, Jiahao Wang, et al. <em>arXiv</em>, 2025.<br>Shows that deductive reasoning can fail primarily because of spatial misinterpretation rather than incorrect logical rules.</li>
-            <li><strong>LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts</strong> — Yijia Xiao, Edward Sun, et al. <em>arXiv</em>, 2024.<br>Requires spatial layouts and diagram structure to be correctly grounded before symbolic logical reasoning can succeed.</li>
+            <li><strong>VGRP-Bench: Visual Grid Reasoning Puzzle Benchmark for Large Vision-Language Models</strong> — Yufan Ren, Konstantinos Tertikas, et al. <em>arXiv</em>, 2025.<br />Uses grid-structured problems where deduction depends on accurate interpretation of spatial configuration and rule propagation.</li>
+            <li><strong>PUZZLES: A Benchmark for Neural Algorithmic Reasoning</strong> — Benjamin Estermann, Luca A. Lanzendörfer, et al. <em>NeurIPS</em>, 2024.<br />Supports spatially grounded deduction through structured puzzle layouts that require constraint propagation over visual states.</li>
+            <li><strong>VisuLogic: A Benchmark for Evaluating Visual Reasoning in Multi-Modal Large Language Models</strong> — Weiye Xu, Jiahao Wang, et al. <em>arXiv</em>, 2025.<br />Shows that deductive reasoning can fail primarily because of spatial misinterpretation rather than incorrect logical rules.</li>
+            <li><strong>LogicVista: Multimodal LLM Logical Reasoning Benchmark in Visual Contexts</strong> — Yijia Xiao, Edward Sun, et al. <em>arXiv</em>, 2024.<br />Requires spatial layouts and diagram structure to be correctly grounded before symbolic logical reasoning can succeed.</li>
           </ul>
+        </details>
 
-          <h5>Geometry-Centric Reasoning Benchmarks</h5>
+        <details class="paper-group">
+          <summary>Geometry-Centric Reasoning Benchmarks</summary>
           <ul class="paper-list">
-            <li><strong>GeoSketch: A Neural-Symbolic Approach to Geometric Multimodal Reasoning with Auxiliary Line Construction and Affine Transformation</strong> — Shichao Weng, Zhiqiang Wang, et al. <em>arXiv</em>, 2025.<br>Focuses directly on geometric construction and transformation, including rotations, reflections, affine mappings, and auxiliary-line reasoning.</li>
-            <li><strong>Structured Task Solving via Modular Embodied Intelligence: A Case Study on Rubik’s Cube</strong> — Chongshan Fan and Shenghai Yuan. <em>arXiv</em>, 2025.<br>Evaluates whether models can decompose complex geometric configurations into modular subproblems and coordinate sequential spatial operations under strict constraints.</li>
+            <li><strong>GeoSketch: A Neural-Symbolic Approach to Geometric Multimodal Reasoning with Auxiliary Line Construction and Affine Transformation</strong> — Shichao Weng, Zhiqiang Wang, et al. <em>arXiv</em>, 2025.<br />Focuses directly on geometric construction and transformation, including rotations, reflections, affine mappings, and auxiliary-line reasoning.</li>
+            <li><strong>Structured Task Solving via Modular Embodied Intelligence: A Case Study on Rubik’s Cube</strong> — Chongshan Fan and Shenghai Yuan. <em>arXiv</em>, 2025.<br />Evaluates whether models can decompose complex geometric configurations into modular subproblems and coordinate sequential spatial operations under strict constraints.</li>
           </ul>
+        </details>
+      </div>
+    </section>
+
+    <section id="cross-cutting-failure-modes" class="section">
+      <div class="container">
+        <h2>Cross-cutting Failure Modes</h2>
+        <p>Across reasoning categories, the literature points to several recurring weaknesses:</p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Perception–reasoning bottleneck</h3>
+            <p>Failure often begins with small perceptual mistakes that later derail reasoning.</p>
+          </div>
+          <div class="card">
+            <h3>Shortcut reliance</h3>
+            <p>Models frequently exploit superficial patterns, style cues, or local correlations.</p>
+          </div>
+          <div class="card">
+            <h3>Brittle generalization</h3>
+            <p>Performance drops sharply on novel renderings, compositions, or transformed instances.</p>
+          </div>
+          <div class="card">
+            <h3>Explanation–execution gap</h3>
+            <p>LVLMs can produce convincing rationales while failing to execute valid reasoning steps.</p>
+          </div>
+          <div class="card">
+            <h3>Weak state consistency</h3>
+            <p>Long-horizon tasks expose difficulties in tracking intermediate states and constraints.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="cross-cutting-failure-modes">
+    <section id="future-directions" class="section alt">
       <div class="container">
-        <div class="card">
-          <h3>Cross-cutting Failure Modes</h3>
-          <p>Across reasoning categories, the literature points to several recurring weaknesses:</p>
-          <ul>
-            <li><strong>Perception–reasoning bottleneck</strong> — Failure often begins with small perceptual mistakes that later derail reasoning.</li>
-            <li><strong>Shortcut reliance</strong> — Models frequently exploit superficial patterns, style cues, or local correlations.</li>
-            <li><strong>Brittle generalization</strong> — Performance drops sharply on novel renderings, compositions, or transformed instances.</li>
-            <li><strong>Explanation–execution gap</strong> — LVLMs can produce convincing rationales while failing to execute valid reasoning steps.</li>
-            <li><strong>Weak state consistency</strong> — Long-horizon tasks expose difficulties in tracking intermediate states and constraints.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <h2>Future Directions</h2>
 
-    <section class="section" id="future-directions">
-      <div class="container">
         <div class="card">
-          <h3>Future Directions</h3>
-
-          <h4>1. The Illusion of Reasoning</h4>
+          <h3>1. The Illusion of Reasoning</h3>
           <p>
             A central concern is that LVLMs may generate fluent intermediate explanations that are
             <strong>not faithfully grounded</strong> in the visual input or the actual reasoning process.
           </p>
+        </div>
 
-          <h4>2. Multi-Agent Collaboration</h4>
+        <div class="card">
+          <h3>2. Multi-Agent Collaboration</h3>
           <p>Agentic setups may improve puzzle solving by enabling:</p>
           <ul>
             <li>proposal and verification of alternative hypotheses</li>
@@ -485,8 +529,10 @@
             <li>better reasoning trace inspection</li>
             <li>explanation judging and constraint validation</li>
           </ul>
+        </div>
 
-          <h4>3. Revisiting Training Objectives</h4>
+        <div class="card">
+          <h3>3. Revisiting Training Objectives</h3>
           <p>Current training often rewards next-token fluency rather than:</p>
           <ul>
             <li>state-consistent reasoning</li>
@@ -494,8 +540,10 @@
             <li>intermediate-step verification</li>
             <li>counterfactual robustness</li>
           </ul>
+        </div>
 
-          <h4>4. Towards Compositional Generalization</h4>
+        <div class="card">
+          <h3>4. Towards Compositional Generalization</h3>
           <p>Future benchmarks should better probe:</p>
           <ul>
             <li>compositional depth</li>
@@ -503,8 +551,10 @@
             <li>controlled variable disentanglement</li>
             <li>abstraction under distribution shift</li>
           </ul>
+        </div>
 
-          <h4>5. Abductive and Lateral Visual Reasoning</h4>
+        <div class="card">
+          <h3>5. Abductive and Lateral Visual Reasoning</h3>
           <p>A major open gap is visual reasoning under:</p>
           <ul>
             <li>incomplete information</li>
@@ -516,55 +566,40 @@
       </div>
     </section>
 
-    <section class="section" id="website">
+    <section id="paper" class="section">
       <div class="container">
-        <div class="card compact">
-          <h3>Website</h3>
-          <p>
-            <a href="https://marialymperaiou.github.io/awesome-visual-puzzles/" target="_blank" rel="noopener noreferrer">
-              https://marialymperaiou.github.io/awesome-visual-puzzles/
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="paper">
-      <div class="container">
-        <div class="card compact">
-          <h3>Paper</h3>
+        <h2>Paper</h2>
+        <div class="card">
           <p>
             <a href="https://arxiv.org/abs/2601.13705" target="_blank" rel="noopener noreferrer">
-              arXiv: 2601.13705
+              arXiv: Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles
             </a>
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="citation">
+    <section id="citation" class="section alt">
       <div class="container">
-        <div class="card">
-          <h3>Citation</h3>
-<pre><code>@misc{lymperaiou2026reasoningpatternmatchingprobing,
+        <h2>Citation</h2>
+        <pre><code>@misc{lymperaiou2026reasoningpatternmatchingprobing,
   title={Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles},
   author={Maria Lymperaiou and Vasileios Karampinis and Giorgos Filandrianos and Angelos Vlachos and Chrysoula Zerva and Athanasios Voulodimos},
   year={2026},
   eprint={2601.13705},
   archivePrefix={arXiv},
   primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2601.13705}
+  url={https://arxiv.org/abs/2601.13705},
 }</code></pre>
-        </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section id="contributing" class="section">
       <div class="container">
-        <div class="card compact">
-          <h3>Contact</h3>
+        <h2>Contributing</h2>
+        <div class="card">
           <p>
-            For questions, collaborations, or adding new visual puzzle papers contact:
+            For questions, collaborations, or adding new visual puzzle papers, contact:
             <a href="mailto:marialymp@ails.ece.ntua.gr">marialymp@ails.ece.ntua.gr</a>
           </p>
         </div>
@@ -572,9 +607,14 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="footer">
     <div class="container">
-      <p>Awesome Visual Puzzles — Project page for “Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles”.</p>
+      <p>
+        Website:
+        <a href="https://marialymperaiou.github.io/awesome-visual-puzzles/" target="_blank" rel="noopener noreferrer">
+          marialymperaiou.github.io/awesome-visual-puzzles
+        </a>
+      </p>
     </div>
   </footer>
 </body>
