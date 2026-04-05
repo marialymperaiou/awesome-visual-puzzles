@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Awesome Visual Puzzles — project page for the paper 'Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles'." />
+  <meta
+    name="description"
+    content="Awesome Visual Puzzles — project page for the paper 'Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles'."
+  />
   <title>Awesome Visual Puzzles</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -33,7 +39,7 @@
           <p class="eyebrow">Project Page</p>
           <h1>Awesome Visual Puzzles</h1>
           <p class="hero-subtitle">
-            <strong>Reasoning or Pattern Matching?</strong><br>
+            <strong>Reasoning or Pattern Matching?</strong><br />
             Probing Large Vision-Language Models with Visual Puzzles
           </p>
           <p class="hero-text">
@@ -45,12 +51,14 @@
             <a class="btn btn-secondary" href="https://github.com/marialymperaiou/awesome-visual-puzzles" target="_blank" rel="noopener noreferrer">GitHub repo</a>
           </div>
         </div>
+
         <div class="hero-card">
           <div class="hero-card-inner">
             <span class="mini-label">Core question</span>
             <h2>Do LVLMs really reason over visual structure?</h2>
             <p>
-              Or do they often succeed through shortcut-driven pattern matching, brittle cues, and visually grounded but shallow heuristics?
+              Or do they often succeed through shortcut-driven pattern matching, brittle cues,
+              and visually grounded but shallow heuristics?
             </p>
             <ul class="hero-points">
               <li>Reasoning-centered taxonomy</li>
@@ -86,23 +94,25 @@
           <p class="section-kicker">Definition</p>
           <h2>What is a visual puzzle?</h2>
         </div>
-        <p>
-          In the survey’s framing, a visual puzzle is a reasoning-centered task with three core properties:
-        </p>
+        <p>In the survey’s framing, a visual puzzle is a reasoning-centered task with three core properties:</p>
+
         <div class="three-grid">
           <article class="info-card">
             <span class="card-number">01</span>
             <h3>Essential reliance on visual information</h3>
           </article>
+
           <article class="info-card">
             <span class="card-number">02</span>
             <h3>Explicitly constrained and verifiable structure</h3>
           </article>
+
           <article class="info-card">
             <span class="card-number">03</span>
             <h3>Focus on reasoning rather than knowledge priors</h3>
           </article>
         </div>
+
         <div class="formula-card">
           <p>
             A visual puzzle can be viewed as a problem instance
@@ -139,18 +149,22 @@
             <h3>Inductive Reasoning</h3>
             <p>Inferring latent rules from examples and generalizing them to new instances.</p>
           </article>
+
           <article class="taxonomy-card">
             <h3>Analogical Reasoning</h3>
             <p>Identifying relational correspondences and transferring them across contexts.</p>
           </article>
+
           <article class="taxonomy-card">
             <h3>Algorithmic Reasoning</h3>
             <p>Executing multi-step procedures while maintaining internal state.</p>
           </article>
+
           <article class="taxonomy-card">
             <h3>Deductive Reasoning</h3>
             <p>Deriving logically necessary conclusions from explicit premises and constraints.</p>
           </article>
+
           <article class="taxonomy-card taxonomy-card-wide">
             <h3>Geometric / Spatial Reasoning</h3>
             <p>Reasoning over transformations, layouts, spatial relations, and structural configurations.</p>
@@ -165,31 +179,56 @@
           <p class="section-kicker">Survey Structure</p>
           <h2>Reasoning categories</h2>
         </div>
+
         <div class="category-stack">
           <article class="category-panel">
             <h3>Inductive Reasoning</h3>
-            <p class="category-focus">Benchmarks in this category test whether LVLMs can infer hidden rules from visual examples rather than match familiar surface patterns.</p>
-            <p class="category-note">Representative families: RPM / PGM, ARC, EasyARC, ARC-AGI-2, BabyVision, VisualPuzzles, VisuRiddles, PuzzleVQA, VisualSphinx, I-RAVEN, IQBench, MANBench.</p>
+            <p class="category-focus">
+              Benchmarks in this category test whether LVLMs can infer hidden rules from visual examples rather than match familiar surface patterns.
+            </p>
+            <p class="category-note">
+              Representative families: RPM / PGM, ARC, EasyARC, ARC-AGI-2, BabyVision, VisualPuzzles, VisuRiddles, PuzzleVQA, VisualSphinx, I-RAVEN, IQBench, MANBench.
+            </p>
           </article>
+
           <article class="category-panel">
             <h3>Analogical Reasoning</h3>
-            <p class="category-focus">These benchmarks test whether LVLMs can identify relational structure, not just recognize individual objects or symbols.</p>
-            <p class="category-note">Representative families: Bongard Problems, Bongard-HOI, Bongard-OpenWorld, Bongard in Wonderland, Bongard-RWR+, REBUS, COLUMBUS, MARVEL, VisualPuzzles, VOILA.</p>
+            <p class="category-focus">
+              These benchmarks test whether LVLMs can identify relational structure, not just recognize individual objects or symbols.
+            </p>
+            <p class="category-note">
+              Representative families: Bongard Problems, Bongard-HOI, Bongard-OpenWorld, Bongard in Wonderland, Bongard-RWR+, REBUS, COLUMBUS, MARVEL, VisualPuzzles, VOILA.
+            </p>
           </article>
+
           <article class="category-panel">
             <h3>Algorithmic Reasoning</h3>
-            <p class="category-focus">These tasks probe whether models can follow procedures, maintain evolving state, and execute multi-step reasoning over time.</p>
-            <p class="category-note">Representative families: PUZZLES, AlgoPuzzleVQA, Jigsaw-Puzzles, LEGO-Puzzles, PuzzleBench, ING-VP, BALROG, PuzzlePlex, ENIGMAEVAL.</p>
+            <p class="category-focus">
+              These tasks probe whether models can follow procedures, maintain evolving state, and execute multi-step reasoning over time.
+            </p>
+            <p class="category-note">
+              Representative families: PUZZLES, AlgoPuzzleVQA, Jigsaw-Puzzles, LEGO-Puzzles, PuzzleBench, ING-VP, BALROG, PuzzlePlex, ENIGMAEVAL.
+            </p>
           </article>
+
           <article class="category-panel">
             <h3>Deductive Reasoning</h3>
-            <p class="category-focus">These benchmarks test whether LVLMs can apply explicit rules and constraints to visually grounded entities and maintain global consistency.</p>
-            <p class="category-note">Representative families: LogicVista, VisuLogic, VisualSphinx, MME-Reasoning, Sudoku-Bench, VGRP-Bench, PUZZLES.</p>
+            <p class="category-focus">
+              These benchmarks test whether LVLMs can apply explicit rules and constraints to visually grounded entities and maintain global consistency.
+            </p>
+            <p class="category-note">
+              Representative families: LogicVista, VisuLogic, VisualSphinx, MME-Reasoning, Sudoku-Bench, VGRP-Bench, PUZZLES.
+            </p>
           </article>
+
           <article class="category-panel">
             <h3>Geometric / Spatial Reasoning</h3>
-            <p class="category-focus">This category stress-tests spatial grounding, geometric transformations, mental rotation, structural consistency, and spatial state tracking.</p>
-            <p class="category-note">Representative families: A-I-RAVEN, I-RAVEN-Mesh, BabyVision, VisualPuzzles, VisuRiddles, VOILA, Jigsaw-Puzzles, LEGO-Puzzles, GeoSketch, Rubik’s Cube-style tasks.</p>
+            <p class="category-focus">
+              This category stress-tests spatial grounding, geometric transformations, mental rotation, structural consistency, and spatial state tracking.
+            </p>
+            <p class="category-note">
+              Representative families: A-I-RAVEN, I-RAVEN-Mesh, BabyVision, VisualPuzzles, VisuRiddles, VOILA, Jigsaw-Puzzles, LEGO-Puzzles, GeoSketch, Rubik’s Cube-style tasks.
+            </p>
           </article>
         </div>
       </div>
@@ -201,23 +240,28 @@
           <p class="section-kicker">Cross-cutting Failure Modes</p>
           <h2>Recurring weaknesses across categories</h2>
         </div>
+
         <div class="failure-grid">
           <article class="failure-card">
             <h3>Perception–reasoning bottleneck</h3>
             <p>Failure often begins with small perceptual mistakes that later derail reasoning.</p>
           </article>
+
           <article class="failure-card">
             <h3>Shortcut reliance</h3>
             <p>Models frequently exploit superficial patterns, style cues, or local correlations.</p>
           </article>
+
           <article class="failure-card">
             <h3>Brittle generalization</h3>
             <p>Performance drops sharply on novel renderings, compositions, or transformed instances.</p>
           </article>
+
           <article class="failure-card">
             <h3>Explanation–execution gap</h3>
             <p>LVLMs can produce convincing rationales while failing to execute valid reasoning steps.</p>
           </article>
+
           <article class="failure-card failure-card-wide">
             <h3>Weak state consistency</h3>
             <p>Long-horizon tasks expose difficulties in tracking intermediate states and constraints.</p>
@@ -232,40 +276,55 @@
           <p class="section-kicker">Future Directions</p>
           <h2>Where visual puzzle evaluation can go next</h2>
         </div>
+
         <div class="timeline">
           <article class="timeline-item">
             <span class="timeline-index">1</span>
             <div>
               <h3>The Illusion of Reasoning</h3>
-              <p>LVLMs may generate fluent intermediate explanations that are not faithfully grounded in the visual input or the actual reasoning process.</p>
+              <p>
+                LVLMs may generate fluent intermediate explanations that are not faithfully grounded in the visual input or the actual reasoning process.
+              </p>
             </div>
           </article>
+
           <article class="timeline-item">
             <span class="timeline-index">2</span>
             <div>
               <h3>Multi-Agent Collaboration</h3>
-              <p>Agentic setups may improve puzzle solving by enabling proposal and verification of alternative hypotheses, explicit disagreement, and better reasoning-trace inspection.</p>
+              <p>
+                Agentic setups may improve puzzle solving by enabling proposal and verification of alternative hypotheses, explicit disagreement, and better reasoning-trace inspection.
+              </p>
             </div>
           </article>
+
           <article class="timeline-item">
             <span class="timeline-index">3</span>
             <div>
               <h3>Revisiting Training Objectives</h3>
-              <p>Current training often rewards next-token fluency rather than state-consistent reasoning, long-horizon execution, intermediate-step verification, and counterfactual robustness.</p>
+              <p>
+                Current training often rewards next-token fluency rather than state-consistent reasoning, long-horizon execution, intermediate-step verification, and counterfactual robustness.
+              </p>
             </div>
           </article>
+
           <article class="timeline-item">
             <span class="timeline-index">4</span>
             <div>
               <h3>Towards Compositional Generalization</h3>
-              <p>Future benchmarks should better probe compositional depth, compositional breadth, controlled variable disentanglement, and abstraction under distribution shift.</p>
+              <p>
+                Future benchmarks should better probe compositional depth, compositional breadth, controlled variable disentanglement, and abstraction under distribution shift.
+              </p>
             </div>
           </article>
+
           <article class="timeline-item">
             <span class="timeline-index">5</span>
             <div>
               <h3>Abductive and Lateral Visual Reasoning</h3>
-              <p>A major open gap is visual reasoning under incomplete information, ambiguous evidence, competing hypotheses, and hypothesis revision.</p>
+              <p>
+                A major open gap is visual reasoning under incomplete information, ambiguous evidence, competing hypotheses, and hypothesis revision.
+              </p>
             </div>
           </article>
         </div>
@@ -278,6 +337,7 @@
           <p class="section-kicker">Paper</p>
           <h2>Read the survey</h2>
         </div>
+
         <div class="paper-card">
           <h3>Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles</h3>
           <p>
@@ -298,6 +358,7 @@
           <p class="section-kicker">Citation</p>
           <h2>BibTeX</h2>
         </div>
+
         <pre class="bibtex"><code>@misc{lymperaiou2026reasoningpatternmatchingprobing,
   title={Reasoning or Pattern Matching? Probing Large Vision-Language Models with Visual Puzzles},
   author={Maria Lymperaiou and Vasileios Karampinis and Giorgos Filandrianos and Angelos Vlachos and Chrysoula Zerva and Athanasios Voulodimos},
