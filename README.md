@@ -49,24 +49,7 @@ A visual puzzle can be viewed as a problem instance **⟨I, R, S⟩**, where:
 ---
 
 ## Taxonomy
-
-The survey organizes visual puzzles into five reasoning categories:
-
-1. **Inductive Reasoning**  
-   Inferring latent rules from examples and generalizing them to new instances.
-
-2. **Analogical Reasoning**  
-   Identifying relational correspondences and transferring them across contexts.
-
-3. **Algorithmic Reasoning**  
-   Executing multi-step procedures while maintaining internal state.
-
-4. **Deductive Reasoning**  
-   Deriving logically necessary conclusions from explicit premises and constraints.
-
-5. **Geometric / Spatial Reasoning**  
-   Reasoning over transformations, layouts, spatial relations, and structural configurations.
-
+![Visual reasoning taxonomy tree](taxonomy_vpuzzles.png)
 ---
 
 ## Inductive Reasoning
@@ -480,3 +463,6 @@ https://marialymperaiou.github.io/awesome-visual-puzzles/
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2601.13705}, 
 }
+
+## Contact
+For questions, collaborations, or adding new visual puzzle papers contact: [marialymp@ails.ece.ntua.gr]
