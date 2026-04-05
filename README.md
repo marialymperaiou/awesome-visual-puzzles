@@ -450,7 +450,7 @@ A major open gap is visual reasoning under:
 https://marialymperaiou.github.io/awesome-visual-puzzles/
 
 ## Paper
-[https://arxiv.org/abs/2601.13705]
+[arXiv](https://arxiv.org/abs/2601.13705)
 
 ## Citation
 ```bibtex
